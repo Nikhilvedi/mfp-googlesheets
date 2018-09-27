@@ -1,0 +1,27 @@
+{
+  "name": "mfp_drive",
+  "version": "1.0.0",
+  "description": "Extract data from MFP and add move it to googlesheets",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nikhilvedi/mfp-googlesheets.git"
+  },
+  "keywords": [
+    "mfp",
+    "googlesheets"
+  ],
+  "author": "Nikhil Vedi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nikhilvedi/mfp-googlesheets/issues"
+  },
+  "homepage": "https://github.com/Nikhilvedi/mfp-googlesheets#readme",
+  "dependencies": {
+    "googleapis": "^24.0.0",
+    "mfp": "^0.7.0"
+  }
+}

@@ -21,7 +21,7 @@ app.get('/', (req, res) => res.send('Welcome to MFP Scraper!'));
 
 
 const SPREADSHEET_ID = config.sheetId;
-
+const sheetsApi = google.sheets('v4');
 
 authentication.authorize()
     .then((auth) => {

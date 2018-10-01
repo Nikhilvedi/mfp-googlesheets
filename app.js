@@ -29,6 +29,12 @@ var sched = schedule.scheduleJob('0 0 23 ? * * *', function() {
   mfpd();
 });
 
+//at minute 20
+var schedTest = schedule.scheduleJob('20 * * * *', function() {
+  console.log('Scheduled Run');
+  mfpd();
+});
+
 var mfpd = function() {
   new Promise(function(resolve, reject) {
     mfp.fetchSingleDate('iamvedi', date.today, ['calories', 'protein', 'carbs', 'fat', 'fiber'], function(mfpData) {
@@ -72,4 +78,5 @@ function appendData(auth, data) {
 }
 
 //run the server 
+
 app.listen(process.env.PORT || 5000, () => console.log("Server Running"));

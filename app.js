@@ -66,7 +66,7 @@ authentication.authorize()
         sheetsApi.spreadsheets.values.get({
             auth: auth,
             spreadsheetId: SPREADSHEET_ID,
-            range: "'MFP_Import'!A1:E",
+            range: "'MFP_Import'!A1:F",
         }, function (err, response) {
             if (err) {
                 console.log('The API returned an error: ' + err);

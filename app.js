@@ -30,7 +30,7 @@ var sched = schedule.scheduleJob('0 0 23 ? * * *', function() {
 });
 
 //at minute 20
-var schedTest = schedule.scheduleJob('20 * * * *', function() {
+var schedTest = schedule.scheduleJob('30 * * * *', function() {
   console.log('Scheduled Run');
   mfpd();
 });
@@ -79,4 +79,4 @@ function appendData(auth, data) {
 
 //run the server 
 
-app.listen(process.env.PORT || 5000, () => console.log("Server Running"));
+app.listen(process.env.PORT || 3000, () => console.log("Server Running"));

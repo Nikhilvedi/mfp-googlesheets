@@ -1,5 +1,6 @@
 //Google sheet
 //https://docs.google.com/spreadsheets/d/1uue-76QgrX1RR-WWixPFVhCW_PPyer6rmW5RwIYWTMs/edit#gid=344784959
+require('dotenv').config()
 
 const express = require('express');
 const app = express();
@@ -17,6 +18,29 @@ var date = require('./Functions/getDate.js');
 var schedule = require('node-schedule');
 
 app.get('/', (req, res) => res.send('Welcome to MFP Scraper!'));
+
+
+const SPREADSHEET_ID = config.sheetId;
+
+
+authentication.authorize()
+    .then((auth) => {
+        sheetsApi.spreadsheets.values.get({
+            auth: auth,
+            spreadsheetId: SPREADSHEET_ID,
+            range: "'Tab Name'!A1:H300",
+        }, function (err, response) {
+            if (err) {
+                console.log('The API returned an error: ' + err);
+                return console.log(err);
+            }
+            var rows = response.values;
+            console.log(null, rows);
+        });
+    })
+    .catch((err) => {
+        console.log('auth error', err);
+    });
 
 //fetch all data
 // mfp.fetchSingleDate('iamvedi', module.today, 'all', function(data) {

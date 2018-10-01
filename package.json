@@ -14,6 +14,9 @@
     "mfp",
     "googlesheets"
   ],
+  "scripts": {
+    "start": "node app.js"
+  },
   "author": "Nikhil Vedi",
   "license": "ISC",
   "bugs": {

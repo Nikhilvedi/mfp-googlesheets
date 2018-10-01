@@ -7,7 +7,6 @@ var date = require('./Functions/getDate.js');
 // var mfp = require('./mfp_export');
 var config = require('./Auth/config'); // get db config file
 
-const port = 3000;
 
 let google = require('googleapis');
 let authentication = require("./Auth/authentication");
@@ -73,4 +72,4 @@ function appendData(auth, data) {
 }
 
 //run the server 
-app.listen(port, () => console.log('MFP Importer is listening on: ' + port));
+app.listen(process.env.PORT || 5000, () => console.log("Server Running"));

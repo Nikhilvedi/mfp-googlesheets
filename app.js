@@ -35,7 +35,7 @@ var sched = schedule.scheduleJob('0 0 23 ? * * *', function() {
 });
 
 //at minute 20
-var schedTest = schedule.scheduleJob('30 * * * *', function() {
+var schedTest = schedule.scheduleJob('20 * * * *', function() {
   console.log('Scheduled Run');
   mfpd();
 });
@@ -61,24 +61,24 @@ var mfpd = function() {
   })
 }
 
-// authentication.authorize()
-//     .then((auth) => {
-//         sheetsApi.spreadsheets.values.get({
-//             auth: auth,
-//             spreadsheetId: SPREADSHEET_ID,
-//             range: "'Tab Name'!A1:H300",
-//         }, function (err, response) {
-//             if (err) {
-//                 console.log('The API returned an error: ' + err);
-//                 return console.log(err);
-//             }
-//             var rows = response.values;
-//             console.log(null, rows);
-//         });
-//     })
-//     .catch((err) => {
-//         console.log('auth error', err);
-//     });
+authentication.authorize()
+    .then((auth) => {
+        sheetsApi.spreadsheets.values.get({
+            auth: auth,
+            spreadsheetId: SPREADSHEET_ID,
+            range: "'MFP_Import'!A1:E",
+        }, function (err, response) {
+            if (err) {
+                console.log('The API returned an error: ' + err);
+                return console.log(err);
+            }
+            var rows = response.values;
+            console.log(null, rows);
+        });
+    })
+    .catch((err) => {
+        console.log('auth error', err);
+    });
 
 
 //google sheets appending

@@ -23,25 +23,6 @@ app.get('/', (req, res) => res.send('Welcome to MFP Scraper!'));
 const SPREADSHEET_ID = config.sheetId;
 const sheetsApi = google.sheets('v4');
 
-authentication.authorize()
-    .then((auth) => {
-        sheetsApi.spreadsheets.values.get({
-            auth: auth,
-            spreadsheetId: SPREADSHEET_ID,
-            range: "'Tab Name'!A1:H300",
-        }, function (err, response) {
-            if (err) {
-                console.log('The API returned an error: ' + err);
-                return console.log(err);
-            }
-            var rows = response.values;
-            console.log(null, rows);
-        });
-    })
-    .catch((err) => {
-        console.log('auth error', err);
-    });
-
 //fetch all data
 // mfp.fetchSingleDate('iamvedi', module.today, 'all', function(data) {
 //  console.log(mfpData);
@@ -80,10 +61,30 @@ var mfpd = function() {
   })
 }
 
+// authentication.authorize()
+//     .then((auth) => {
+//         sheetsApi.spreadsheets.values.get({
+//             auth: auth,
+//             spreadsheetId: SPREADSHEET_ID,
+//             range: "'Tab Name'!A1:H300",
+//         }, function (err, response) {
+//             if (err) {
+//                 console.log('The API returned an error: ' + err);
+//                 return console.log(err);
+//             }
+//             var rows = response.values;
+//             console.log(null, rows);
+//         });
+//     })
+//     .catch((err) => {
+//         console.log('auth error', err);
+//     });
+
+
 //google sheets appending
 function appendData(auth, data) {
   var sheets = google.sheets('v4');
-  sheets.spreadsheets.values.append({
+  sheetsApi.spreadsheets.values.append({
     auth: auth,
     spreadsheetId: config.sheetId,
     range: 'MFP_Import!A2:E', //Change this to the sheet and work out how to aut increment the values

@@ -34,8 +34,8 @@ var sched = schedule.scheduleJob('0 0 23 ? * * *', function() {
   mfpd();
 });
 
-//at minute 20
-var schedTest = schedule.scheduleJob('20 * * * *', function() {
+//at minute 25
+var schedTest = schedule.scheduleJob('25 * * * *', function() {
   console.log('Scheduled Run');
   mfpd();
 });
@@ -55,10 +55,13 @@ var mfpd = function() {
     result.push(date.today);
     return result;
   }).then(function(result) {
-    authentication.authenticate().then((auth) => {
+    authentication.authorize().then((auth) => {
       appendData(auth, result);
     });
   })
+  .catch((err) => {
+        console.log('auth error', err);
+    });
 }
 
 authentication.authorize()
